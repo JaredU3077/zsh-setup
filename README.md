@@ -80,6 +80,9 @@ The script offers a curated selection of beautiful themes:
 
 ## 🚀 Quick Start
 
+### **New Installation or Repair Mode**
+The script automatically detects if you have an existing installation and offers repair/update mode.
+
 ### Option 1: Direct Download & Run
 ```bash
 # Download the script
@@ -138,12 +141,18 @@ The script creates/modifies these files:
 - **Custom theme** with your chosen color scheme
 
 ### Ghostty Features
-- **GPU acceleration** for smooth performance
+- **GPU acceleration** for smooth performance (144 FPS)
 - **Custom themes** with easy switching
 - **Window decorations** (optional)
 - **Background opacity** control
 - **Nerd Font support** for icons and symbols
 - **Native macOS integration**
+- **Enhanced cursor** with beam style and blinking
+- **Better text rendering** with programming ligatures
+- **Improved window padding** and margins
+- **Enhanced keyboard shortcuts** (Cmd+T for tabs, Cmd+Shift+N for windows)
+- **Better scrolling** with 10,000 line history
+- **Smooth vsync** and performance optimizations
 
 ### Developer Workflow
 - **Enhanced completions** for common commands
@@ -209,11 +218,41 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions your-pl
 
 ## 🐛 Troubleshooting
 
-### Font Issues
-If icons don't display correctly:
-1. Restart Ghostty
-2. Verify font installation: `ls ~/Library/Fonts/ | grep -i nerd`
-3. Check Ghostty font settings in `~/.config/ghostty/config`
+### Font Issues (Missing Icons/Logos/Question Marks)
+If icons don't display correctly or you see question marks instead of symbols:
+
+#### **For Ghostty (Primary Terminal):**
+The script automatically configures Ghostty with enhanced UI/UX features. If you see issues:
+1. **Restart Ghostty completely**
+2. **Check font configuration:** `cat ~/.config/ghostty/config`
+3. **Reinstall fonts:** `brew reinstall --cask font-jetbrains-mono-nerd-font font-fira-code-nerd-font font-meslo-lg-nerd-font font-hack-nerd-font`
+
+#### **macOS Terminal Reset:**
+Our script automatically resets macOS Terminal to default settings since Ghostty provides a superior experience:
+- **No more font configuration issues**
+- **Clean, default Terminal state**
+- **Focus on the better terminal (Ghostty)**
+
+#### **Quick Fix Commands:**
+```bash
+# Update everything
+brew update && brew upgrade
+
+# Reinstall fonts
+brew reinstall --cask font-jetbrains-mono-nerd-font font-fira-code-nerd-font font-meslo-lg-nerd-font font-hack-nerd-font
+
+# Reinstall tools
+brew reinstall lsd bat zsh-completions
+
+# Refresh font cache
+fc-cache -frv
+```
+
+### **Why This Approach is Better:**
+- **Ghostty** is faster, more modern, and has better features
+- **No more Terminal app font issues** - it's reset to default
+- **Enhanced UI/UX** with GPU acceleration, better cursors, and improved rendering
+- **Consistent experience** across all your terminal sessions
 
 ### Theme Not Applied
 1. Restart Ghostty completely
@@ -225,6 +264,12 @@ If `lsd` or `bat` aren't found:
 1. Restart your terminal
 2. Check Homebrew installation: `brew --version`
 3. Reinstall tools: `brew install lsd bat`
+
+### Quick Fix Command (All-in-One)
+If you're experiencing multiple issues, run this command to fix everything:
+```bash
+brew update && brew upgrade && brew reinstall --cask font-jetbrains-mono-nerd-font font-fira-code-nerd-font font-meslo-lg-nerd-font font-hack-nerd-font && brew reinstall lsd bat zsh-completions
+```
 
 ## 📝 License
 
